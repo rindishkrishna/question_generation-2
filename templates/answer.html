@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/answer.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <script type='text/javascript'>
         window.smartlook||(function(d) {
           var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
@@ -19,6 +20,10 @@
 </head>
 
 <body>
+    <div id="loading" style="background:url(/static/spinner.gif) no-repeat; width: 35px;
+    height: 35px;
+    display: none;
+    cursor: wait;"></div>
     <a href="/">
         <div class="logo">Q GEN</div>
     </a>
@@ -73,6 +78,12 @@
                     
                 }
             </script>
+             <script type="text/javascript">
+                function loading() {
+                  $("#loading").show();
+                  $("#content").hide();
+                }
+              </script>
 </body>
 
 </html>

@@ -12,86 +12,98 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <script src='https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js'></script>
   <script type='text/javascript'>
-    window.smartlook||(function(d) {
-      var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
-      var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
-      c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
-      })(document);
-      smartlook('init', 'bae69e5af34143580302fc3edcd7e3c308ab1809');
-  </script> 
+    window.smartlook || (function (d) {
+      var o = smartlook = function () {
+          o.api.push(arguments)
+        },
+        h = d.getElementsByTagName('head')[0];
+      var c = d.createElement('script');
+      o.api = new Array();
+      c.async = true;
+      c.type = 'text/javascript';
+      c.charset = 'utf-8';
+      c.src = 'https://rec.smartlook.com/recorder.js';
+      h.appendChild(c);
+    })(document);
+    smartlook('init', 'bae69e5af34143580302fc3edcd7e3c308ab1809');
+  </script>
 </head>
 
 <body>
-    <div id="loading"></div>
-<div class="logo">Q GEN</div>
+  <div id="loading" style="background:url(/static/spinner.gif) no-repeat; width: 35px;
+    height: 35px;
+    display: none;
+    cursor: wait;"></div>
+  <div class="logo">Q GEN</div>
 
   <div class="main">
 
     <div class="head">Study. Test.</div>
+    <div class="head2">Enter study material text or a snap of it, and get AI generated questions with answers. Learn
+      anything 3x faster without added effort.</div>
     <form method="POST" action="{{url_for('home')}}">
-    <div class="flex">
-
-      <div class="addpara">
-
-        <textarea name="a" placeholder="Paste clipboard" id="paragraph" cols="30" rows="10"></textarea>
-      </div>
-
-      <div class="or">OR</div>
-
-      <div class="frame">
-        <div class="thumbnail">
-          <div class="thumbnail__header">
-            <p>Upload/Drag&Drop image</p>
-            <span class="loadBar"></span>
+      <div class="flex">
+        <div class="frame-wrapper">
+        <div class="addpara">
+            <textarea name="a" placeholder="Paste clipboard" id="paragraph" cols="30" rows="10"></textarea>
+            
           </div>
+          <div class="description">Please organize sentences and remove any symbols like alpha, beta etc and equations
+            if this shows error, especially if uploading a photo of textbook.</div>
+        </div>
 
-          <div class="thumbnail__body">
-            <div>
-              <div class="drop icon">
-
-                <i id="cam" class="fas fa-camera"></i>
-
-                <span class="name"></span>
-                <input type="file" accept="image/*" id="file" name="file">
-              </div>
-              <div class="arrows icon hidden">
-                <i class="fas fa-circle-notch"></i>
-
+        <div class="or">OR</div>
+        <div class="frame-wrapper">
+          <div class="frame">
+            <div class="thumbnail">
+              <div class="thumbnail__header">
+                <p>Upload/Drag&Drop image</p>
+                <span class="loadBar"></span>
               </div>
 
-              <div class="checkmark icon hidden">
-                <i class="fas fa-check"></i>
+              <div class="thumbnail__body">
+                <div>
+                  <div class="drop icon">
 
+                    <i id="cam" class="fas fa-camera"></i>
+
+                    <span class="name"></span>
+                    <input type="file" accept="image/*" id="file" name="file">
+                  </div>
+                  <div class="arrows icon hidden">
+                    <i class="fas fa-circle-notch"></i>
+
+                  </div>
+
+                  <div class="checkmark icon hidden">
+                    <i class="fas fa-check"></i>
+
+                  </div>
+                </div>
+
+                <button id="upload" class="btn uploadBtn" type="button">Upload</button>
               </div>
             </div>
 
-            <button id="upload" class="btn uploadBtn" type="button">Upload</button>
           </div>
+          <div class="description">If you want to upload another photo, simply refresh webpage</div>
         </div>
       </div>
 
-    </div>
-    <div class="generate">
-      <input id="generate" name="generate" value="Generate" type="submit" value='predict!' onclick="loading()">
-    </div>
-  </form>
-
-    <!-- <div class="generate">
-      <a href="./answer.html">
-        <input type="button" id="generate" value="Generate">
-      </a>
-    </div> -->
-
+      <div class="generate">
+        <input id="generate" name="generate" value="Generate" type="submit" value='predict!' onclick="loading()">
+      </div>
+    </form>
 
   </div>
   <script src="{{url_for('static', filename='js/index.js')}}"></script>
   <script type="text/javascript">
-    function loading(){
-        $("#loading").show();
-        $("#content").hide();       
+    function loading() {
+      $("#loading").show();
+      $("#content").hide();
     }
-</script>
+  </script>
 
 </body>
 
-</html> 
+</html>
