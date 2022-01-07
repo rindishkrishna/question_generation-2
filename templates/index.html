@@ -4,67 +4,94 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Add Paragraph</title>
+  <title>Qgen</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/index.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <script src='https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js'></script>
+  <script type='text/javascript'>
+    window.smartlook||(function(d) {
+      var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+      var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+      c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+      })(document);
+      smartlook('init', 'bae69e5af34143580302fc3edcd7e3c308ab1809');
+  </script> 
 </head>
 
 <body>
+    <div id="loading"></div>
+<div class="logo">Q GEN</div>
 
   <div class="main">
-    <form method="POST" , action="{{url_for('home')}}">
-    <div class="addpara">
-      
-        <textarea name="a" placeholder=" Add paragraph here...." id="" cols="30" rows="10"></textarea>
-    </div>
 
-    <div class="generate-container">
-      <p>OR</p>
-    </div>
+    <div class="head">Study. Test.</div>
+    <form method="POST" action="{{url_for('home')}}">
+    <div class="flex">
 
-    <div class="frame">
-      <div class="thumbnail">
-        <div class="thumbnail__header">
-          <p>Drop file to upload</p>
-          <span class="loadBar"></span>
-        </div>
+      <div class="addpara">
 
-        <div class="thumbnail__body">
-          <div>
-            <div class="drop icon">
+        <textarea name="a" placeholder="Paste clipboard" id="paragraph" cols="30" rows="10"></textarea>
+      </div>
 
-              <i id="cam" class="fas fa-camera"></i>
+      <div class="or">OR</div>
 
-              <span class="name"></span>
-              <input type="file" id="file" name="file">
-            </div>
-
-            <div class="arrows icon hidden">
-              <i class="fas fa-circle-notch"></i>
-
-            </div>
-
-            <div class="checkmark icon hidden">
-              <i class="fas fa-check"></i>
-
-            </div>
+      <div class="frame">
+        <div class="thumbnail">
+          <div class="thumbnail__header">
+            <p>Upload/Drag&Drop image</p>
+            <span class="loadBar"></span>
           </div>
 
-          <button id="upload" class="btn uploadBtn" type="button" >Save</button>
+          <div class="thumbnail__body">
+            <div>
+              <div class="drop icon">
+
+                <i id="cam" class="fas fa-camera"></i>
+
+                <span class="name"></span>
+                <input type="file" accept="image/*" id="file" name="file">
+              </div>
+              <div class="arrows icon hidden">
+                <i class="fas fa-circle-notch"></i>
+
+              </div>
+
+              <div class="checkmark icon hidden">
+                <i class="fas fa-check"></i>
+
+              </div>
+            </div>
+
+            <button id="upload" class="btn uploadBtn" type="button">Upload</button>
+          </div>
         </div>
       </div>
+
     </div>
-
-
-    <div class="generate-container">
-      <input id="generate" name="generate" value="Generate questions" type="submit" value='predict!' >
+    <div class="generate">
+      <input id="generate" name="generate" value="Generate" type="submit" value='predict!' onclick="loading()">
     </div>
   </form>
-    <!-- <script src="" async defer></script> -->
-    <script src="{{url_for('static', filename='js/index.js')}}"></script>
+
+    <!-- <div class="generate">
+      <a href="./answer.html">
+        <input type="button" id="generate" value="Generate">
+      </a>
+    </div> -->
+
+
   </div>
+  <script src="{{url_for('static', filename='js/index.js')}}"></script>
+  <script type="text/javascript">
+    function loading(){
+        $("#loading").show();
+        $("#content").hide();       
+    }
+</script>
+
 </body>
 
-</html>
+</html> 

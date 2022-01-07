@@ -8,37 +8,71 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/answer.css') }}">
+    <script type='text/javascript'>
+        window.smartlook||(function(d) {
+          var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+          var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+          c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+          })(document);
+          smartlook('init', 'bae69e5af34143580302fc3edcd7e3c308ab1809');
+      </script> 
 </head>
 
 <body>
+    <a href="/">
+        <div class="logo">Q GEN</div>
+    </a>
     <div class="main">
         {% for i in data %}
         <div class="question-wrapper">
-            
+
             <div class="question-box">
                 <div class="question">
-                    <span>{{i.question}}</span>
+                    <span>
 
+                        {{i.question}}</span>
                 </div>
                 <div class="answer-container">
                     <div class="answer">
                         <input type="text" placeholder=" Type your answer here.." name="" id="user-input">
                         <br>
-                        <input type="button" id="submit" value="Submit">
-                    </div>
-                    <div class="show-answer">
-                        <div class="correct-answer">
-                            <span class="answer-value"> {{i.answer}}</span></span>
-                        </div>
+
                     </div>
                 </div>
+                <div class="answer-wrapper">
+                    <div>
+                        <input type="button" id="submit" value="Submit" onclick="submitFunction(this)">
+                    </div>
+
+                    <div class="show-answer" id="answer-btn">
+                        <div id="your-answer">
+                            <input type="button" id="show" value="answer" onclick="answerFunction(this)">
+                        </div>
+                        
+                    </div>
+                    <span id="ans">{{i.answer}}</span>
+
                     
+                </div>
+
+              
+                
             </div>
             {% endfor %}
-            <a href='/'>go back to home page</a>
-    </div>
-
-    <script src="" async defer></script>
+            </div>
+            <script>
+                function answerFunction(elem) {
+                    elem.parentNode.children[0].style.visibility="hidden";
+                    elem.parentNode.parentNode.parentNode.children[2].style.display="flex";
+                    
+                }
+                function submitFunction(elem) {
+                //    answerFunction(elem.parentNode.parentNode);
+                    elem.parentNode.parentNode.children[1].children[0].style.visibility="hidden";
+                    elem.parentNode.parentNode.children[2].style.display="flex";    
+                    
+                }
+            </script>
 </body>
 
 </html>
