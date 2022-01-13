@@ -3,6 +3,32 @@ body{
    padding: 0;
    overflow-x: hidden;
 }
+#try_again{
+    width: 15rem;
+    height: 3rem;
+    font-size: 1rem;
+    background: black;
+    /* letter-spacing: 0.4rem; */
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 10px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    margin-right: 30px;
+}
+#try{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.error{
+    display: flex;  
+text-align: center;
+}
+#selectedY{
+    display: none;
+}
 .logo{
     font-weight: bolder;
     font-size: 1.2rem;
